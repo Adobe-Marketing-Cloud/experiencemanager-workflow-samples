@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>FileVault Package Properties</comment>
+<entry key="createdBy">admin</entry>
+<entry key="name">googletranslate-content</entry>
+<entry key="lastModified">2013-08-21T21:54:18.326-04:00</entry>
+<entry key="lastModifiedBy">admin</entry>
+<entry key="requiresRestart">false</entry>
+<entry key="created">2013-08-21T21:54:18.371-04:00</entry>
+<entry key="buildCount">1</entry>
+<entry key="version">2.0</entry>
+<entry key="dependencies"/>
+<entry key="requiresRoot">false</entry>
+<entry key="packageFormatVersion">2</entry>
+<entry key="lastWrapped">2013-08-21T21:54:18.326-04:00</entry>
+<entry key="group">Adobe Marketing Cloud</entry>
+<entry key="description">This provides a package to perform translation using Google Translation&lt;br&gt;&#13;
+The translation is done through a workflow and will translate the page according to the language that is part of the content page. Eg. /content/geometrixx/de, /content/geometrixx/de/support, /content/geometrixx/de/support/hello will translate it to German.&lt;br&gt;&#13;
+It assumes that the language field is always the third position. These can be configured in the workflow scripts.&lt;br&gt;&#13;
+&lt;br&gt;&#13;
+This includes:&#13;
+&lt;ol&gt;&#13;
+&lt;li&gt;Bundle to perform translation&#13;
+&lt;li&gt;Workflow script to perform a workflow translation process&#13;
+&lt;li&gt;A simple workflow model (Google Translation) for activating the translation&#13;
+&lt;li&gt;Component to do adhoc translation&#13;
+&lt;/ol&gt;&#13;
+&lt;br&gt;&#13;
+&lt;b&gt;Note&lt;/b&gt;: This version uses the new Google Translate API V2</entry>
+<entry key="lastWrappedBy">admin</entry>
+</properties>

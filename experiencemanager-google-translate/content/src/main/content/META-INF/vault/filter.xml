@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/adobe/install/googletranslate-bundle-2.0.jar"/>
+    <filter root="/etc/workflow/scripts/translation"/>
+    <filter root="/etc/workflow/models/google_translation"/>
+    <filter root="/apps/adobe/translation/google"/>
+</workspaceFilter>

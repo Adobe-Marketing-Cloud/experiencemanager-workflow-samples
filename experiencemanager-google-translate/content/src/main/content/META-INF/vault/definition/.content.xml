@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:vlt="http://www.day.com/jcr/vault/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:created="{Date}2013-08-21T21:54:18.326-04:00"
+    jcr:createdBy="admin"
+    jcr:description="This provides a package to perform translation using Google Translation&lt;br>&#xd;&#xa;The translation is done through a workflow and will translate the page according to the language that is part of the content page. Eg. /content/geometrixx/de, /content/geometrixx/de/support, /content/geometrixx/de/support/hello will translate it to German.&lt;br>&#xd;&#xa;It assumes that the language field is always the third position. These can be configured in the workflow scripts.&lt;br>&#xd;&#xa;&lt;br>&#xd;&#xa;This includes:&#xd;&#xa;&lt;ol>&#xd;&#xa;&lt;li>Bundle to perform translation&#xd;&#xa;&lt;li>Workflow script to perform a workflow translation process&#xd;&#xa;&lt;li>A simple workflow model (Google Translation) for activating the translation&#xd;&#xa;&lt;li>Component to do adhoc translation&#xd;&#xa;&lt;/ol>&#xd;&#xa;&lt;br>&#xd;&#xa;&lt;b>Note&lt;/b>: This version uses the new Google Translate API V2"
+    jcr:lastModified="{Date}2013-08-21T21:54:18.326-04:00"
+    jcr:lastModifiedBy="admin"
+    jcr:primaryType="vlt:PackageDefinition"
+    buildCount="1"
+    group="Adobe Marketing Cloud"
+    lastUnwrapped="{Date}2013-08-21T21:54:18.326-04:00"
+    lastUnwrappedBy="admin"
+    lastWrapped="{Date}2013-08-21T21:54:18.326-04:00"
+    lastWrappedBy="admin"
+    name="Google Translate 2.0"
+    requiresRestart="{Boolean}false"
+    requiresRoot="{Boolean}false"
+    version="2.0">
+    <thumbnail.png/>
+    <filter jcr:primaryType="nt:unstructured">
+        <f0
+            jcr:primaryType="nt:unstructured"
+            mode="replace"
+            root="/apps/adobe/install/googletranslate-bundle-2.0.jar"
+            rules="[]"/>
+        <f1
+            jcr:primaryType="nt:unstructured"
+            mode="replace"
+            root="/etc/workflow/scripts/translation/googletranslate.ecma"
+            rules="[]"/>
+        <f2
+            jcr:primaryType="nt:unstructured"
+            mode="replace"
+            root="/etc/workflow/models/google_translation"
+            rules="[]"/>
+        <f3
+            jcr:primaryType="nt:unstructured"
+            mode="replace"
+            root="/apps/adobe/translation/google"
+            rules="[]"/>
+    </filter>
+</jcr:root>

@@ -1,0 +1,57 @@
+log.info("executing google translation script now...");
+log.info("Payload: " + workItem.getWorkflowData().getPayload());
+
+var workflowData = workItem.getWorkflowData();
+if (workflowData.getPayloadType() == "JCR_PATH") {
+    var session = workflowSession.getSession();
+    var path = workflowData.getPayload().toString();
+        
+    var resolver = sling.getService(Packages.org.apache.sling.jcr.resource.JcrResourceResolverFactory).getResourceResolver(session);
+    
+    var translatorHelper = new Packages.com.adobe.translation.google.Helper();
+    var rcManager = sling.getService(Packages.com.day.cq.workflow.collection.ResourceCollectionManager);
+    var tService = sling.getService(Packages.com.adobe.translation.google.TranslationService);
+
+    var rcCollection = new Packages.com.day.cq.workflow.collection.ResourceCollectionUtil.getResourceCollection(session.getItem(path), rcManager); 
+    
+    // If the path starts with /content, then this is not a workflow package, this is the content path to have the workflow executed
+    if (path.startsWith("/content"))
+    {
+        rcCollection = null;
+    }
+    
+    // Get the list of paths to be translated from the workflow package, if available   
+    var paths = translatorHelper.getPaths(path, rcCollection);
+    
+    //iterate through the paths that are in the workflow package / item
+    var it = paths.iterator();
+
+    var pageManager = resolver.adaptTo(Packages.com.day.cq.wcm.api.PageManager);
+    
+    // iterate through all content pages to be translated
+    while (it.hasNext())
+    {
+        var currentPath = it.next();
+        log.info("Translating Path: " + currentPath);
+        
+        var containingPage = pageManager.getContainingPage(currentPath);
+    
+        try {
+            // Get the language of the current page, assuming that the ISO language is in the 3rd location
+            // eg. /content/geometrixx/en/new_page
+            var translator = tService.getTranslator("", currentPath.split("/")[3]);
+            
+            // Specify the list of properties to be translated
+            translator.addPropertyToTranslate("text");
+            translator.addPropertyToTranslate("jcr:title");
+            translator.addPropertyToTranslate("subtitle");
+            translator.addPropertyToTranslate("title");
+            translator.addPropertyToTranslate("benefits");
+            translator.addPropertyToTranslate("jcr:description");
+                    
+            translator.translatePage(containingPage);
+        } catch(e) {
+            log.warn("Cannot translate page " + containingPage.getPath() + e);
+        }        
+    }      
+}
